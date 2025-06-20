@@ -42,6 +42,14 @@ app.get('/api/persons', (request, response) => {
     response.json(data)
 })
 
+app.get('/api/testimonials', (request, response) => {
+    response.json([
+        { id: 1, name:'John Doe', text: 'This is a great service!' },
+        { id: 2, name:'Jane Smith', text: 'I love using this app!' },
+        { id: 3, name:'Alice Johnson', text: 'Highly recommend to everyone!' }
+    ])
+})
+
 app.get('/api/persons/:id', (request, response) => {
     const id = request.params.id
     const person = data.find(person => person.id === id)
