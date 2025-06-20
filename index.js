@@ -84,6 +84,20 @@ app.post('/api/persons', (request, response) => {
     response.status(201).json(person)
 })
 
+app.post('/api/queries', (request, response) => {
+    const body = request.body
+    if (!body.name || !body.number || !body.query) {
+        return response.status(400).json({ error: 'name, number or query missing' })
+    }
+    const query = {
+        name: body.name,
+        number: body.number,
+        query: body.query,
+        email: body.email || '',
+    }
+    response.status(201).json(query)
+})
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
